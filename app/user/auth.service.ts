@@ -1,5 +1,6 @@
 import {Injectable } from '@angular/core'
 import {IUser} from './user.model'
+  
 
 @Injectable()
 export class AuthService{
@@ -11,11 +12,14 @@ export class AuthService{
             firstName: 'Johnny',
             lastName: 'Kappa'
         }
-
-
     }
 
     isAuthenticated():boolean{
         return !!this.currentUser;
     }
+
+    updateCurrentUser(firstName: string, lastName: string) {
+        this.currentUser.firstName = firstName
+        this.currentUser.lastName = lastName
+      }
 }

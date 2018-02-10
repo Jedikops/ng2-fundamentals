@@ -1,6 +1,7 @@
 import {Component } from '@angular/core'
 import {AuthService} from './auth.service'
 import {Router} from '@angular/router'
+
 @Component({
     templateUrl: 'app/user/login.component.html',
     styles:[`
