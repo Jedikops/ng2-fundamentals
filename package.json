@@ -24,7 +24,7 @@
     "ng2f-server": "^0.2.3",
     "portfinder": "^1.0.13",
     "reflect-metadata": "^0.1.12",
-    "rxjs": "5.0.1",
+    "rxjs": "^5.0.1",
     "systemjs": "0.19.40",
     "toastr": "^2.1.4",
     "zone.js": "0.8.4"
