@@ -6,7 +6,8 @@ import {
     CreateEventComponent,
     EventRouteActivator,
     EventListResolver, 
-    CreateSessionComponenet
+    CreateSessionComponenet,
+    SessionListComponent
  } from './events/index'
 
 import { NgModule } from '@angular/core'
@@ -20,6 +21,7 @@ import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
 @NgModule({
     imports: [BrowserModule,
         FormsModule,
@@ -32,7 +34,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         EventDetailsComponent,
         CreateEventComponent, 
         CreateSessionComponenet,
-        Error404Component],
+        Error404Component, SessionListComponent],
     providers:[
         EventService,
         ToastrService,
