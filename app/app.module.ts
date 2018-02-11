@@ -1,14 +1,14 @@
 import {
     EventsListComponent,
     EventThumbnailComponent,
-    EventService, 
+    EventService,
     EventDetailsComponent,
     CreateEventComponent,
     EventRouteActivator,
-    EventListResolver, 
+    EventListResolver,
     CreateSessionComponenet,
     SessionListComponent
- } from './events/index'
+} from './events/index'
 
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
@@ -20,6 +20,7 @@ import { appRoutes } from './routes';
 import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CollapsibleWellComponent } from './common/collapsible-well.component';
 
 
 @NgModule({
@@ -27,31 +28,34 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         FormsModule,
         ReactiveFormsModule,
         RouterModule.forRoot(appRoutes)],
-    declarations: [EventsAppComponent, 
-        EventsListComponent, 
-        EventThumbnailComponent, 
-        NavBarComponent, 
+    declarations: [EventsAppComponent,
+        EventsListComponent,
+        EventThumbnailComponent,
+        NavBarComponent,
         EventDetailsComponent,
-        CreateEventComponent, 
+        CreateEventComponent,
         CreateSessionComponenet,
-        Error404Component, SessionListComponent],
-    providers:[
+        Error404Component, 
+        SessionListComponent,
+        CollapsibleWellComponent],
+    providers: [
         EventService,
         ToastrService,
-        EventRouteActivator, 
+        EventRouteActivator,
         EventListResolver,
-        AuthService,
-        {provide:'canDeactivateCreateEvent', useValue: checkDirtyState }],
+        AuthService, 
+        
+        { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }],
     bootstrap: [EventsAppComponent]
 
-}) 
-export class AppModule{
-    
+})
+export class AppModule {
+
 
 }
 
-function checkDirtyState(component:CreateEventComponent){
-    if(component.isDirty)
+function checkDirtyState(component: CreateEventComponent) {
+    if (component.isDirty)
         return confirm("Are you sure?")
     return true
 
