@@ -8,7 +8,9 @@ import {
     EventListResolver,
     CreateSessionComponenet,
     SessionListComponent,
-    DurationPipe
+    DurationPipe,
+    UpvoteComponent,
+    LocationValidator
 } from './events/index'
 
 import { NgModule } from '@angular/core'
@@ -20,10 +22,10 @@ import { appRoutes } from './routes';
 import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { JQ_TOKEN, TOASTR_TOKEN, Toastr, CollapsibleWellComponent, SimpleModalComponent, ModalTriggerDirective} from './common/index'
+import { JQ_TOKEN, TOASTR_TOKEN, Toastr, CollapsibleWellComponent, SimpleModalComponent, ModalTriggerDirective, VoterService } from './common/index'
 
 declare let toastr: Toastr
-declare let jQuery : Object
+declare let jQuery: Object
 
 @NgModule({
     imports: [BrowserModule,
@@ -42,7 +44,9 @@ declare let jQuery : Object
         CollapsibleWellComponent,
         SimpleModalComponent,
         DurationPipe,
-        ModalTriggerDirective],
+        ModalTriggerDirective,
+        UpvoteComponent,
+        LocationValidator],
     providers: [
         EventService,
         { provide: TOASTR_TOKEN, useValue: toastr },
@@ -50,6 +54,7 @@ declare let jQuery : Object
         EventRouteActivator,
         EventListResolver,
         AuthService,
+        VoterService,
         { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }],
     bootstrap: [EventsAppComponent]
 
