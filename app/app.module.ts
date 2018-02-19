@@ -4,7 +4,7 @@ import {
     EventService,
     EventDetailsComponent,
     CreateEventComponent,
-    EventRouteActivator,
+    EventResolver,
     EventListResolver,
     CreateSessionComponenet,
     SessionListComponent,
@@ -23,7 +23,7 @@ import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JQ_TOKEN, TOASTR_TOKEN, Toastr, CollapsibleWellComponent, SimpleModalComponent, ModalTriggerDirective, VoterService } from './common/index'
-
+import { HttpModule } from '@angular/http'
 declare let toastr: Toastr
 declare let jQuery: Object
 
@@ -31,6 +31,7 @@ declare let jQuery: Object
     imports: [BrowserModule,
         FormsModule,
         ReactiveFormsModule,
+        HttpModule,
         RouterModule.forRoot(appRoutes)],
     declarations: [EventsAppComponent,
         EventsListComponent,
@@ -51,7 +52,7 @@ declare let jQuery: Object
         EventService,
         { provide: TOASTR_TOKEN, useValue: toastr },
         { provide: JQ_TOKEN, useValue: jQuery },
-        EventRouteActivator,
+        EventResolver,
         EventListResolver,
         AuthService,
         VoterService,

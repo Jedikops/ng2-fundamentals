@@ -3,12 +3,12 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/r
 import { EventService } from './shared/event.service';
 
 @Injectable()
-export class EventListResolver implements Resolve<any>
+export class EventResolver implements Resolve<any>
 {
     constructor(private eventService:EventService){}
     
-    resolve(){
-        return this.eventService.getEvents()
+    resolve(route: ActivatedRouteSnapshot){
+        return this.eventService.getEvent(route.params['id'])
     }
     
 }

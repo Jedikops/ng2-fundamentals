@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
     this.firstName = new FormControl(this.auth.currentUser.firstName, [Validators.required, Validators.pattern('[a-zA-Z].*')]);
     this.lastName = new FormControl(this.auth.currentUser.lastName,
       [Validators.required, Validators.pattern('[a-zA-Z].*')]);
-      
+
     this.profileForm = new FormGroup({
       firstName: this.firstName,
       lastName: this.lastName
@@ -37,10 +37,17 @@ export class ProfileComponent implements OnInit {
   saveProfile() {
     if (this.profileForm.valid) {
       this.auth.updateCurrentUser(this.profileForm.value.firstName, this.profileForm.value.lastName)
+        .subscribe(() => {
+          this.toastr.success('Profile saved')
+        })
       // this.router.navigate(['events'])
-      this.toastr.success('Profile saved')
-
     }
+  }
+
+  logout() {
+    this.auth.logout().subscribe((resp) => {
+      this.router.navigate(['/user/login'])
+    })
   }
 
   validateFirstName(): boolean {
